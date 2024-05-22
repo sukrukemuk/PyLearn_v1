@@ -12,7 +12,7 @@ class MyLogoWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(left: 25, right: 32, bottom: 14),
       child: SvgPicture.asset(
-        'assets/icons/logo.svg',
+        'assets/icons/copyright.svg',
         width: 140,
         height: 140,
       ),
