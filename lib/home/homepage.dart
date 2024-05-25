@@ -220,6 +220,8 @@ class DrawerWidget extends StatelessWidget {
                     } else {
                       String photoUrl = snapshot.data?['profilePhoto'] ?? '';
                       String userName = snapshot.data?['name'] ?? 'Misafir';
+                      String surName = snapshot.data?['surname'] ?? '';
+
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -235,25 +237,18 @@ class DrawerWidget extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 70),
-                                  child: Text(
-                                    '$userName ',
-                                    style: GoogleFonts.josefinSans(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.black,
-                                    ),
+                                Text(
+                                  '$userName $surName ',
+                                  style: GoogleFonts.josefinSans(
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .titleSmall,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
                                   ),
-                                ),
-                                const Icon(
-                                  Icons.laptop_mac,
-                                  color: Color.fromARGB(255, 0, 255, 81),
-                                  size: 24,
                                 ),
                               ],
                             ),
