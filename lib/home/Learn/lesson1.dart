@@ -6,6 +6,7 @@ class Lesson1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -17,9 +18,9 @@ class Lesson1 extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'Nesne Yönelimli Programlama',
+          'Sayı Veri Tipleri: Integer ve Float',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -31,45 +32,242 @@ class Lesson1 extends StatelessWidget {
           },
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Nesne Yönelimli Programlama (OOP) Nedir?',
-                  style: TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
+                const Text(
+                  'Sayı Veri Tipleri',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Nesne yönelimli programlama (OOP), programlamada bir paradigma veya yaklaşımdır. OOP, programlama problemlerini çözmek için nesnelerin (objelerin) kullanımına dayanır. Her nesne, veri ve bu veri üzerinde işlem yapabilen işlevleri içeren bir yapıdır. OOP, genellikle dört ana prensip üzerine kuruludur: sınıflar ve nesneler, kapsülleme, kalıtım ve çok biçimlilik.',
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da sayılar için iki ana veri tipi vardır: Integer (tam sayı) ve Float (ondalık sayı). Bu veri tipleri, sayısal işlemler yapmak için kullanılır.',
                   style: TextStyle(fontSize: 16),
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'OOP\'nin Temel Prensipleri:',
+                const SizedBox(height: 20),
+                const Text(
+                  'Integer (int)',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Integer, tam sayıları temsil eder. Pozitif veya negatif olabilirler ve sıfır da bir tam sayıdır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'x = 5  # Pozitif tam sayı\n'
+                    'y = -10  # Negatif tam sayı\n'
+                    'z = 0  # Sıfır',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Float',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Float, ondalık sayıları temsil eder. Ondalık noktadan sonra gelen basamaklarla birlikte tam sayıdan daha hassas değerler saklar.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'pi = 3.14  # Basit bir float değeri\n'
+                    'rate = 2.5  # Başka bir float değeri\n'
+                    'negative_float = -1.5  # Negatif float değeri',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Sayılarla İşlemler',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Python, sayılarla çeşitli matematiksel işlemler yapmayı sağlar. İşte bazı temel işlemler ve örnekler:',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Toplama (+)',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  '1. Sınıflar ve Nesneler\n'
-                  '2. Kapsülleme: Nesne içindeki verilerin ve metodların sınırlarının belirlenmesi.\n'
-                  '3. Kalıtım\n'
-                  '4. Çok Biçimlilik',
-                  style: TextStyle(fontSize: 16),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 3.5\n'
+                    'toplam = a + b  # toplam 13.5 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'Kapsülleme Nedir?',
+                const SizedBox(height: 10),
+                const Text(
+                  'Çıkarma (-)',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Kapsülleme, bir nesnenin iç durumunun (verilerin) ve davranışlarının (metodların) bir araya getirilmesidir. Bu durum ve davranışlar, nesnenin dış dünyayla olan etkileşimini kontrol eden bir arayüz sağlar. Örneğin, bir Araba sınıfı düşünelim. Arabanın hızı, yakıt seviyesi gibi veriler sınıfın içinde tutulabilir ve araba sınıfı dışındaki kodların doğrudan bu verilere erişmesi engellenebilir. Bu, veri gizleme olarak da adlandırılır ve nesne yönelimli programlamanın temel prensiplerinden biridir.',
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 3.5\n'
+                    'fark = a - b  # fark 6.5 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Çarpma (*)',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 3.5\n'
+                    'çarpım = a * b  # çarpım 35.0 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Bölme (/)',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 4\n'
+                    'bölüm = a / b  # bölüm 2.5 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Tam Sayı Bölme (//)',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 4\n'
+                    'tam_bölüm = a // b  # tam_bölüm 2 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Mod Alma (%)',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 4\n'
+                    'mod = a % b  # mod 2 olur',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Üs Alma (**)',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 2\n'
+                    'b = 3\n'
+                    'üs = a ** b  # üs 8 olur (2^3)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Tür Sorgulama ve Dönüştürme',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da tür sorgulama ve dönüştürme işlemleri sıklıkla kullanılır.',
                   style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Tür Sorgulama',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'type(x)  # x\'in türünü döndürür\n'
+                    'type(pi)  # pi\'nin türünü döndürür',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Tür Dönüştürme',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da bir değeri başka bir türe dönüştürmek için int(), float() gibi fonksiyonlar kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'float(123)  # 123.0 döner\n'
+                    'int(3.14)  # 3 döner\n'
+                    'float("3.14")  # 3.14 döner\n'
+                    'int("123")  # 123 döner',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'float("abc")  # Hata: Değer hatalı bir float formatıdır\n'
+                  'int("123.45")  # Hata: Değer hatalı bir int formatıdır',
+                  style: TextStyle(fontSize: 16, color: Colors.red),
                 ),
               ],
             ),

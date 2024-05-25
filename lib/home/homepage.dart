@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pylearn_v1/home/course/course.dart';
 import 'package:pylearn_v1/home/drawer/help.dart';
 import 'package:pylearn_v1/home/drawer/options.dart';
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 31, 27, 27),
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Row(
@@ -47,7 +49,7 @@ class HomePage extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 Icons.connect_without_contact,
-                color: Color.fromARGB(255, 18, 155, 91),
+                color: Colors.blue,
                 size: 25,
               ),
               onPressed: () {
@@ -55,16 +57,6 @@ class HomePage extends StatelessWidget {
               },
             ),
           ],
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Colors.black
-                ],
-              ),
-            ),
-          ),
         ),
         drawer: const DrawerWidget(),
         body: const CardList(),
@@ -82,19 +74,19 @@ class CardList extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       children: const <Widget>[
         CustomCard(
-          image: AssetImage('assets/images/ders.jpg'),
+          image: AssetImage('assets/images/Notlar.png'),
           title: 'NOTLAR',
           description: 'Sizin için hazırlamış olduğumuz python notları.',
           page: Learn(),
         ),
         CustomCard(
-          image: AssetImage('assets/images/loops.jpg'),
+          image: AssetImage('assets/images/Kurslar.png'),
           title: 'KURSLAR',
           description: 'Kurs içeriklerini izleyerek kendinizi geliştirin.',
           page: YoutubePlayerExample(),
         ),
         CustomCard(
-          image: AssetImage('assets/images/quizz.png'),
+          image: AssetImage('assets/images/Quizzes.png'),
           title: 'QUİZZ',
           description: 'Bu quizzleri çözerek kendinizi test edin.',
           page: Quizzes(),
@@ -161,7 +153,7 @@ class CustomCard extends StatelessWidget {
               ),
               subtitle: Text(
                 description,
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 14),
               ),
             ),
             Align(
@@ -243,13 +235,19 @@ class DrawerWidget extends StatelessWidget {
                             ),
                             const SizedBox(height: 10),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  '$userName ',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 70),
+                                  child: Text(
+                                    '$userName ',
+                                    style: GoogleFonts.josefinSans(
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                                 const Icon(

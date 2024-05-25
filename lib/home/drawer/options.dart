@@ -25,8 +25,7 @@ class AccountDeletionScreen extends StatelessWidget {
 
   AccountDeletionScreen({super.key});
 
-  Future<void> _deleteAccount(BuildContext context) async {
-  }
+  Future<void> _deleteAccount(BuildContext context) async {}
 
   Future<void> _changePassword(BuildContext context) async {
     try {
@@ -69,10 +68,7 @@ class AccountDeletionScreen extends StatelessWidget {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),

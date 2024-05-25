@@ -6,6 +6,7 @@ class Lesson13 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -17,9 +18,9 @@ class Lesson13 extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'Koşullu İfadeler ve Döngüler',
+          'Döngüler',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -31,62 +32,156 @@ class Lesson13 extends StatelessWidget {
           },
         ),
       ),
-      body: const SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Koşullu İfadeler ve Döngüler',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Dart dilinde, koşullu ifadeler ve döngüler program akışını kontrol etmek için kullanılır.\n\n'
-                '1. Koşullu İfadeler:\n'
-                '   - "if", "else if" ve "else" ifadeleri, belirli koşullara bağlı olarak farklı kod bloklarını çalıştırmak için kullanılır.\n\n'
-                '2. Döngüler:\n'
-                '   - "for" döngüsü: Belirli bir aralıktaki veya bir liste üzerindeki öğeleri tekrarlamak için kullanılır.\n'
-                '   - "while" döngüsü: Bir koşul sağlandığı sürece bir kod bloğunu tekrarlamak için kullanılır.\n'
-                '   - "do-while" döngüsü: Kod bloğunu en az bir kez çalıştırmak ve ardından koşul sağlandığı sürece tekrarlamak için kullanılır.\n\n'
-                'İşte birkaç örnek:\n\n'
-                '// Koşullu ifadeler\n'
-                'int x = 10;\n'
-                'if (x > 5) {\n'
-                '  print(\'x 5\'ten büyüktür.\');\n'
-                '} else {\n'
-                '  print(\'x 5\'ten küçük veya eşittir.\');\n'
-                '}\n\n'
-                '// else if kullanımı\n'
-                'int y = 7;\n'
-                'if (y > 10) {\n'
-                '  print(\'y 10\'dan büyüktür.\');\n'
-                '} else if (y > 5) {\n'
-                '  print(\'y 5\'ten büyüktür ama 10\'dan küçüktür.\');\n'
-                '} else {\n'
-                '  print(\'y 5\'ten küçük veya eşittir.\');\n'
-                '}\n\n'
-                '// Döngüler\n'
-                '// for döngüsü\n'
-                'for (int i = 0; i < 5; i++) {\n'
-                '  print(\'Döngü \$i\'); // <- \$ işareti ile değişken değerini yazdırıyoruz\n'
-                '}\n\n'
-                '// while döngüsü\n'
-                'int z = 0;\n'
-                'while (z < 3) {\n'
-                '  print(\'While döngüsü: \$z\');\n'
-                '  z++;\n'
-                '}\n\n'
-                '// do-while döngüsü\n'
-                'int w = 0;\n'
-                'do {\n'
-                '  print(\'Do-while döngüsü: \$w\');\n'
-                '  w++;\n'
-                '} while (w < 3);\n',
-                style: TextStyle(fontSize: 16),
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Python Döngüler',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da döngüler, belirli bir işlemi belirli koşullar altında tekrarlamak için kullanılır. Bu sayede bir liste, demet veya dize gibi veri yapıları üzerinde gezinme, belirli bir aralıktaki sayıları işleme ve daha pek çok işlem gerçekleştirilebilir.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  '1. while Döngüsü',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'while döngüsü, belirli bir koşul doğru olduğu sürece işlemi tekrarlar.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'while koşul:',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Text(
+                  '    # işlemler',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Örnek:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'i = 0\n'
+                    'while i < 5:\n'
+                    '    print(i)\n'
+                    '    i += 1',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  '2. for Döngüsü',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'for döngüsü, bir dizi, liste veya demet gibi veri yapıları üzerinde gezinir.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'for eleman in veri_yapısı:',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Text(
+                  '    # işlemler',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Örnek:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'liste = [1, 2, 3, 4, 5]\n'
+                    'for eleman in liste:\n'
+                    '    print(eleman)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  '3. range() Fonksiyonu',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'range() fonksiyonu, belirli bir aralıktaki sayıları üretmek için kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'for i in range(başlangıç, bitiş, adım):',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Text(
+                  '    # işlemler',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Örnek:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'for i in range(1, 6, 2):\n'
+                    '    print(i)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  '4. break ve continue İfadeleri',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'break ifadesi, bir döngüyü sonlandırmak için kullanılırken, continue ifadesi, döngünün geri kalanını atlayarak bir sonraki yineleme işlemine geçmek için kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Örnek:',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'for i in range(1, 11):\n'
+                    '    if i % 2 == 0:\n'
+                    '        continue\n'
+                    '    print(i)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

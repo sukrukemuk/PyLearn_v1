@@ -23,10 +23,7 @@ class _QuizzDeleteState extends State<QuizzDelete> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),
@@ -94,8 +91,8 @@ class _QuizzDeleteState extends State<QuizzDelete> {
                               color: Colors.white,
                             ),
                           ),
-                          icon:
-                              const Icon(Icons.arrow_drop_down, color: Colors.white),
+                          icon: const Icon(Icons.arrow_drop_down,
+                              color: Colors.white),
                           iconSize: 25,
                           dropdownColor: Colors.black,
                           underline: const SizedBox(),
@@ -162,7 +159,8 @@ class _QuizzDeleteState extends State<QuizzDelete> {
                 itemCount: documentNames.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.black,
@@ -222,9 +220,7 @@ class _QuizzDeleteState extends State<QuizzDelete> {
                                                 color: Colors.blue,
                                                 size: 40,
                                               ),
-                                        const SizedBox(
-                                            height:
-                                                10), 
+                                        const SizedBox(height: 10),
                                         Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,

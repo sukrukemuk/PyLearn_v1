@@ -43,10 +43,7 @@ class _QuestionsState extends State<Questions> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),

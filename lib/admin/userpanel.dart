@@ -40,10 +40,7 @@ class _UsersPanelState extends State<UsersPanel> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),
@@ -114,7 +111,8 @@ class _UsersPanelState extends State<UsersPanel> {
                             _showUserInfoDialog(users[index]);
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                            margin: const EdgeInsets.only(
+                                top: 20, left: 5, right: 5),
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Colors.black,
@@ -139,8 +137,8 @@ class _UsersPanelState extends State<UsersPanel> {
                               textColor: Colors.white,
                               title: Text(
                                 users[index]['username'],
-                                style:
-                                    const TextStyle(fontSize: 20, color: Colors.blue),
+                                style: const TextStyle(
+                                    fontSize: 20, color: Colors.blue),
                               ),
                               subtitle: Text(users[index]['email']),
                               trailing: Column(
@@ -189,8 +187,7 @@ class _UsersPanelState extends State<UsersPanel> {
         await FirebaseFirestore.instance.collection('users').get();
     List<Map<String, dynamic>> tempList = [];
     for (QueryDocumentSnapshot doc in snapshot.docs) {
-      Map<String, dynamic>? docData =
-          doc.data() as Map<String, dynamic>?;
+      Map<String, dynamic>? docData = doc.data() as Map<String, dynamic>?;
       Map<String, dynamic> userData = {
         'userId': doc.id,
         'username': getFieldValue(docData, 'username'),
@@ -198,8 +195,7 @@ class _UsersPanelState extends State<UsersPanel> {
         'surname': getFieldValue(docData, 'surname'),
         'name': getFieldValue(docData, 'name'),
         'quizz': getFieldValue(docData, 'completed_quizzes'),
-        'profilePhoto':
-            getFieldValue(docData, 'profilePhoto'),
+        'profilePhoto': getFieldValue(docData, 'profilePhoto'),
       };
       tempList.add(userData);
     }

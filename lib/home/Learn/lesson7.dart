@@ -6,6 +6,7 @@ class Lesson7 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -17,9 +18,9 @@ class Lesson7 extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'Nesne Yönelimli Programlama',
+          'Tuple',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -31,45 +32,88 @@ class Lesson7 extends StatelessWidget {
           },
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Nesne Yönelimli Programlama (OOP) Nedir?',
-                  style: TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
+                const Text(
+                  'Python Tuple',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Nesne yönelimli programlama (OOP), programlamada bir paradigma veya yaklaşımdır. OOP, programlama problemlerini çözmek için nesnelerin (objelerin) kullanımına dayanır. Her nesne, veri ve bu veri üzerinde işlem yapabilen işlevleri içeren bir yapıdır. OOP, genellikle dört ana prensip üzerine kuruludur: sınıflar ve nesneler, kapsülleme, kalıtım ve çok biçimlilik.',
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da bir tuple, değiştirilemez (immutable) bir veri yapısıdır. Tıpkı listeler gibi birden çok öğeyi tek bir değişkende saklar, ancak tuple elemanlarına sonradan müdahale edilemez.',
                   style: TextStyle(fontSize: 16),
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'OOP\'nin Temel Prensipleri:',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                const SizedBox(height: 20),
+                const Text(
+                  'Tuple Tanımlama ve Erişim',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  '1. Sınıflar ve Nesneler\n'
-                  '2. Kapsülleme: Nesne içindeki verilerin ve metodların sınırlarının belirlenmesi.\n'
-                  '3. Kalıtım\n'
-                  '4. Çok Biçimlilik',
+                const SizedBox(height: 10),
+                const Text(
+                  'Tuple, () parantezleri içinde virgülle ayrılmış öğelerle tanımlanır. Tuple elemanlarına indeks numaraları ile erişilebilir:',
                   style: TextStyle(fontSize: 16),
                 ),
-                SizedBox(height: 20),
-                Text(
-                  'Kapsülleme Nedir?',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'fruits = ("apple", "banana", "cherry")\n'
+                    'print(fruits[0])  # "apple"\n'
+                    'print(fruits[1])  # "banana"\n'
+                    'print(fruits[2])  # "cherry"',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Kapsülleme, bir nesnenin iç durumunun (verilerin) ve davranışlarının (metodların) bir araya getirilmesidir. Bu durum ve davranışlar, nesnenin dış dünyayla olan etkileşimini kontrol eden bir arayüz sağlar. Örneğin, bir Araba sınıfı düşünelim. Arabanın hızı, yakıt seviyesi gibi veriler sınıfın içinde tutulabilir ve araba sınıfı dışındaki kodların doğrudan bu verilere erişmesi engellenebilir. Bu, veri gizleme olarak da adlandırılır ve nesne yönelimli programlamanın temel prensiplerinden biridir.',
+                const SizedBox(height: 20),
+                const Text(
+                  'Tuple Elemanlarını Değiştirmek',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Tuple elemanlarını değiştirmek mümkün değildir. Bu yüzden, tuple oluşturulduktan sonra içeriği değiştirilemez:',
                   style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'fruits = ("apple", "banana", "cherry")\n'
+                    'fruits[1] = "blueberry"  # Hata!',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Tuple Metotları ve Operasyonları',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Tuple, değiştirilemez olduğu için listelerdeki gibi ekstra metotları ve operasyonları desteklemez. Ancak, bazı temel operasyonlar kullanılabilir:',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'fruits = ("apple", "banana", "cherry")\n'
+                    'print(len(fruits))  # 3\n'
+                    'print("banana" in fruits)  # True\n'
+                    'print(fruits.index("cherry"))  # 2',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
                 ),
               ],
             ),

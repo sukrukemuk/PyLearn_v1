@@ -52,7 +52,8 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text("Hata"),
-              content: const Text("Bu e-posta adresiyle bir kullanıcı bulunamadı."),
+              content:
+                  const Text("Bu e-posta adresiyle bir kullanıcı bulunamadı."),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -72,8 +73,8 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text("Hata"),
-            content:
-                const Text("Şifre sıfırlama isteği gönderilirken bir hata oluştu."),
+            content: const Text(
+                "Şifre sıfırlama isteği gönderilirken bir hata oluştu."),
             actions: [
               TextButton(
                 onPressed: () {
@@ -106,8 +107,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
         title: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 62),
+            padding: const EdgeInsets.only(left: 62),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -131,8 +131,8 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
         ),
         child: Center(
           child: Container(
-            margin:
-                const EdgeInsets.only(right: 20.0, left: 20.0, top: 170, bottom: 170),
+            margin: const EdgeInsets.only(
+                right: 20.0, left: 20.0, top: 170, bottom: 170),
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
               color: Colors.blue,
@@ -163,15 +163,18 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                     labelStyle: const TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.black, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.black, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.black, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.black, width: 2),
                     ),
                     filled: true,
                     fillColor: Colors.white,

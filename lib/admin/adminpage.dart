@@ -16,18 +16,14 @@ class AdminPage extends StatelessWidget {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),
         title: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 62),
+            padding: const EdgeInsets.only(left: 62),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

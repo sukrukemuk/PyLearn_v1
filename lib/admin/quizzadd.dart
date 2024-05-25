@@ -80,7 +80,6 @@ class _AddQuizState extends State<AddQuizz> {
       option4controller.text
     ];
     if (!options.contains(correctcontroller.text)) {
-
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: Colors.black,
@@ -162,18 +161,14 @@ class _AddQuizState extends State<AddQuizz> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
+              colors: [Colors.white, Colors.black],
             ),
           ),
         ),
         title: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 62),
+            padding: const EdgeInsets.only(left: 62),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -299,15 +294,18 @@ class _AddQuizState extends State<AddQuizz> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     hintText: "1. Seçeneği giriniz.",
                     hintStyle: GoogleFonts.josefinSans(
@@ -350,15 +348,18 @@ class _AddQuizState extends State<AddQuizz> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     hintText: "2. Seçeneği giriniz.",
                     hintStyle: GoogleFonts.josefinSans(
@@ -401,15 +402,18 @@ class _AddQuizState extends State<AddQuizz> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     hintText: "3. Seçeneği giriniz.",
                     hintStyle: GoogleFonts.josefinSans(
@@ -452,15 +456,18 @@ class _AddQuizState extends State<AddQuizz> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     hintText: "4. Seçeneği giriniz.",
                     hintStyle: GoogleFonts.josefinSans(
@@ -499,15 +506,18 @@ class _AddQuizState extends State<AddQuizz> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blue, width: 2),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
                     ),
                     hintText: "Doğru Seçeneği giriniz.",
                     hintStyle: GoogleFonts.josefinSans(
@@ -524,7 +534,8 @@ class _AddQuizState extends State<AddQuizz> {
               ),
               const SizedBox(height: 20),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 13),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 13),
                 width: MediaQuery.of(context).size.width,
                 height: 60,
                 decoration: BoxDecoration(
@@ -539,8 +550,7 @@ class _AddQuizState extends State<AddQuizz> {
                                 item,
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  color: Colors
-                                      .orange,
+                                  color: Colors.orange,
                                 ),
                               ),
                             ))

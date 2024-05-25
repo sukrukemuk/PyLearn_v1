@@ -332,6 +332,7 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
       backgroundColor: const Color.fromARGB(255, 31, 27, 27),
       appBar: !_isVideoInFullScreen()
           ? AppBar(
+              backgroundColor: Colors.white,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 color: Colors.black,
@@ -339,16 +340,6 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-              ),
-              flexibleSpace: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.white,
-                      Colors.black
-                    ],
-                  ),
-                ),
               ),
               title: const Text(
                 'Kurslar',
@@ -366,8 +357,11 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
+              ),
               shadowColor: Colors.white,
-              elevation: 10,
+              elevation: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -381,7 +375,7 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 5),
                   GestureDetector(
                     onTap: () {
                       _openVideoPlayer(index);
@@ -400,7 +394,7 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
                             child: Icon(
                               Icons.play_circle_fill,
                               color: Colors.white,
-                              size: 64,
+                              size: 70,
                             ),
                           ),
                         ],

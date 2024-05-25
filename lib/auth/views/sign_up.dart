@@ -30,7 +30,6 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SingleChildScrollView(
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -54,8 +53,7 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(),
@@ -95,11 +93,9 @@ class _SignUpState extends State<SignUp> {
                             fontSize: 18,
                             fontWeight: FontWeight.w400),
                         controller: _emailController,
-                        textInputAction: TextInputAction
-                            .next,
+                        textInputAction: TextInputAction.next,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(
-                              _passwordFocus);
+                          FocusScope.of(context).requestFocus(_passwordFocus);
                         },
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -109,10 +105,7 @@ class _SignUpState extends State<SignUp> {
                         },
                         decoration: InputDecoration(
                           labelText: "E-posta",
-                          labelStyle: const TextStyle(
-                              color: Colors
-                                  .white),
-
+                          labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide:
@@ -120,19 +113,15 @@ class _SignUpState extends State<SignUp> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2), 
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
-                          filled: true, 
+                          filled: true,
                           fillColor: Colors.black,
                         ),
                       ),
@@ -146,9 +135,7 @@ class _SignUpState extends State<SignUp> {
                             fontSize: 18,
                             fontWeight: FontWeight.w400),
                         controller: _passwordController,
-                        focusNode:
-                            _passwordFocus,
-
+                        focusNode: _passwordFocus,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Lütfen parolanızı giriniz.";
@@ -158,10 +145,7 @@ class _SignUpState extends State<SignUp> {
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "Parola",
-                          labelStyle: const TextStyle(
-                              color: Colors
-                                  .white),
-
+                          labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide:
@@ -169,17 +153,13 @@ class _SignUpState extends State<SignUp> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           filled: true,
                           fillColor: Colors.black,
@@ -227,7 +207,8 @@ class _SignUpState extends State<SignUp> {
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
-                            side: const BorderSide(color: Colors.black, width: 3),
+                            side:
+                                const BorderSide(color: Colors.black, width: 3),
                           ),
                           color: Colors.white,
                           minWidth: 400,
@@ -273,8 +254,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     const Padding(
-                      padding:
-                          EdgeInsets.only(left: 15, bottom: 7, top: 5),
+                      padding: EdgeInsets.only(left: 15, bottom: 7, top: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -300,12 +280,14 @@ class _SignUpState extends State<SignUp> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (_) => const SignIn()),
+                                MaterialPageRoute(
+                                    builder: (_) => const SignIn()),
                               );
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(color: Colors.black, width: 3),
+                              side: const BorderSide(
+                                  color: Colors.black, width: 3),
                             ),
                             color: Colors.white,
                             minWidth: 400,

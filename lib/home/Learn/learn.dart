@@ -20,78 +20,69 @@ class Learn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 31, 27, 27),
-        appBar: AppBar(
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Colors.black
-                ],
-              ),
-            ),
-          ),
-          title: const Text(
-            'Notlar',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, size: 30),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 31, 27, 27),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Notlar',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        body: MyImageList(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, size: 30),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
+      body: MyImageList(),
     );
   }
 }
 
 class MyImageList extends StatelessWidget {
   final List<String> imagePaths = [
-    'assets/images/fonction.jpg',
-    'assets/images/variables.png',
-    'assets/images/grammar.jpg',
-    'assets/images/loops.jpg',
-    'assets/images/fonction.jpg',
-    'assets/images/fonction.jpg',
-    'assets/images/variables.png',
-    'assets/images/grammar.jpg',
-    'assets/images/loops.jpg',
-    'assets/images/fonction.jpg',
-    'assets/images/fonction.jpg',
-    'assets/images/variables.png',
-    'assets/images/grammar.jpg',
-    'assets/images/loops.jpg',
-    'assets/images/fonction.jpg',
+    'assets/images/lesson1.png',
+    'assets/images/lesson2.png',
+    'assets/images/lesson3.png',
+    'assets/images/lesson4.png',
+    'assets/images/lesson5.png',
+    'assets/images/lesson6.png',
+    'assets/images/lesson7.png',
+    'assets/images/lesson8.png',
+    'assets/images/lesson9.png',
+    'assets/images/lesson10.png',
+    'assets/images/lesson11.png',
+    'assets/images/lesson12.png',
+    'assets/images/lesson13.png',
+    'assets/images/lesson14.png',
+    'assets/images/lesson15.png',
   ];
 
   final List<String> imageDescriptions = [
-    'Nesne Yönelimli Programlama (OOP)',
-    'Veri Türleri',
-    'Söz Dizimi',
+    'Sayı Veri Tipleri: Integer ve Float',
+    'Matematiksel Operatörler',
+    'Değişken Tanımlama',
+    'Veri Tipi Dönüşümleri',
+    'Karakter Dizileri: Strings',
+    'Listeler',
+    'Tuple',
+    'Sets',
+    'Dictionary',
+    'Değer ve Referans Türleri',
+    'Operatörler',
+    'Koşul İfadeleri',
     'Döngüler',
     'Fonksiyonlar',
-    'Nesne Yönelimli Programlama (OOP)',
-    'Veri Türleri',
-    'Söz Dizimi',
-    'Döngüler',
-    'Fonksiyonlar',
-    'Nesne Yönelimli Programlama (OOP)',
-    'Veri Türleri',
-    'Söz Dizimi',
-    'Döngüler',
-    'Fonksiyonlar',
+    'Nesne Tabanlı Programlama',
   ];
+
   MyImageList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -100,47 +91,108 @@ class MyImageList extends StatelessWidget {
         return CustomCard(
           image: AssetImage(imagePaths[index]),
           title: imageDescriptions[index],
-          description: 'Bu ders hakkında detaylı bilgi almak için tıklayınız.',
-          page: getPageByIndex(index),
+          onTap: () {
+            navigateToLesson(context, index);
+          },
         );
       },
     );
   }
 
-  Widget getPageByIndex(int index) {
+  void navigateToLesson(BuildContext context, int index) {
     switch (index) {
       case 0:
-        return const Lesson1();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson1()),
+        );
+        break;
       case 1:
-        return const Lesson2();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson2()),
+        );
+        break;
       case 2:
-        return const Lesson3();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson3()),
+        );
+        break;
       case 3:
-        return const Lesson4();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson4()),
+        );
+        break;
       case 4:
-        return const Lesson5();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson5()),
+        );
+        break;
       case 5:
-        return const Lesson6();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson6()),
+        );
+        break;
       case 6:
-        return const Lesson7();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson7()),
+        );
+        break;
       case 7:
-        return const Lesson8();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson8()),
+        );
+        break;
       case 8:
-        return const Lesson9();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson9()),
+        );
+        break;
       case 9:
-        return const Lesson10();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson10()),
+        );
+        break;
       case 10:
-        return const Lesson11();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson11()),
+        );
+        break;
       case 11:
-        return const Lesson12();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson12()),
+        );
+        break;
       case 12:
-        return const Lesson13();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson13()),
+        );
+        break;
       case 13:
-        return const Lesson14();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson14()),
+        );
+        break;
       case 14:
-        return const Lesson15();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Lesson15()),
+        );
+        break;
       default:
-        return Container();
+        break;
     }
   }
 }
@@ -148,36 +200,30 @@ class MyImageList extends StatelessWidget {
 class CustomCard extends StatelessWidget {
   final ImageProvider<Object> image;
   final String title;
-  final String description;
-  final Widget page;
+  final VoidCallback onTap;
 
-  const CustomCard(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.page});
+  const CustomCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
-      },
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.0),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey,
               spreadRadius: 2,
               blurRadius: 5,
-              offset: const Offset(0, 3),
+              offset: Offset(0, 3),
             ),
           ],
         ),
@@ -199,30 +245,25 @@ class CustomCard extends StatelessWidget {
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      fontSize: 16,
+                  const Text(
+                    'Bu ders hakkında detaylı bilgi almak için tıklayınız.',
+                    style: TextStyle(
+                      fontSize: 13,
                     ),
                   ),
                 ],
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment.bottomRight,
               child: IconButton(
-                icon: const Icon(Icons.arrow_forward),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => page),
-                  );
-                },
+                icon: Icon(Icons.arrow_forward),
+                onPressed: null,
               ),
             ),
           ],

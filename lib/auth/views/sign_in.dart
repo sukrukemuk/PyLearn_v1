@@ -59,7 +59,6 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SingleChildScrollView(
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -83,8 +82,7 @@ class _SignInState extends State<SignIn> {
                 child: Column(
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(),
@@ -124,11 +122,9 @@ class _SignInState extends State<SignIn> {
                             fontSize: 18,
                             fontWeight: FontWeight.w400),
                         controller: _emailController,
-                        textInputAction: TextInputAction
-                            .next,
+                        textInputAction: TextInputAction.next,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(
-                              _passwordFocus);
+                          FocusScope.of(context).requestFocus(_passwordFocus);
                         },
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -246,7 +242,8 @@ class _SignInState extends State<SignIn> {
                                   .then((value) {
                                 Navigator.pushAndRemoveUntil(
                                   context,
-                                  MaterialPageRoute(builder: (_) => const HomePage()),
+                                  MaterialPageRoute(
+                                      builder: (_) => const HomePage()),
                                   (route) => false,
                                 );
                               }).catchError((error) {
@@ -265,7 +262,8 @@ class _SignInState extends State<SignIn> {
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
-                            side: const BorderSide(color: Colors.black, width: 3),
+                            side:
+                                const BorderSide(color: Colors.black, width: 3),
                           ),
                           color: Colors.white,
                           minWidth: 400,
@@ -318,12 +316,14 @@ class _SignInState extends State<SignIn> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (_) => const SignUp()),
+                                MaterialPageRoute(
+                                    builder: (_) => const SignUp()),
                               );
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(color: Colors.black, width: 3),
+                              side: const BorderSide(
+                                  color: Colors.black, width: 3),
                             ),
                             color: Colors.white,
                             minWidth: 400,

@@ -6,6 +6,7 @@ class Lesson11 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -17,9 +18,9 @@ class Lesson11 extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'Veriler ve Sözdizimleri',
+          'Operatörler',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -31,50 +32,102 @@ class Lesson11 extends StatelessWidget {
           },
         ),
       ),
-      body: const SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Python Veri Türleri ve Sözdizimi',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Python, kullanımı kolay ve anlaşılır bir sözdizimine sahip bir programlama dilidir. Python\'da kullanılan temel veri tipleri şunlardır:\n\n'
-                '- Sayılar: Tam sayılar (int), ondalık sayılar (float), karmaşık sayılar\n'
-                '- Metin: String\n'
-                '- Boole: True veya False\n'
-                '- Listeler\n'
-                '- Demetler (Tuples)\n'
-                '- Sözlükler (Dictionaries)\n\n'
-                'Python\'da, kod blokları girintilendirme ile ayrılır. Ayrıca, birçok dilde olduğu gibi koşullu ifadeler (if-else), döngüler (for, while) ve fonksiyonlar gibi yapılar da bulunur.\n\n'
-                'Örneklerle:',
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 10),
-              Text(
-                '// Koşullu İfadeler\n'
-                'if condition:\n'
-                '    # Kod bloğu\n'
-                'elif another_condition:\n'
-                '    # Başka bir kod bloğu\n'
-                'else:\n'
-                '    # Diğer durum için kod bloğu\n\n'
-                '// Döngüler\n'
-                'for item in iterable:\n'
-                '    # Kod bloğu\n\n'
-                'while condition:\n'
-                '    # Kod bloğu\n\n'
-                '// Fonksiyonlar\n'
-                'def function_name(parameters):\n'
-                '    # Fonksiyonun yapacağı işlemler\n'
-                '    return result',
-                style: TextStyle(fontSize: 16, fontFamily: 'Courier'),
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Python Operatörleri',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Python\'da birçok operatör bulunmaktadır. Bu operatörler, aritmetik, karşılaştırma, atama, mantıksal ve diğer çeşitli işlemler için kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Aritmetik Operatörler',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Aritmetik operatörler, matematiksel işlemler için kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'a = 10\n'
+                    'b = 5\n'
+                    'print("Toplama:", a + b)\n'
+                    'print("Çıkarma:", a - b)\n'
+                    'print("Çarpma:", a * b)\n'
+                    'print("Bölme:", a / b)\n'
+                    'print("Üs alma:", a ** b)\n'
+                    'print("Mod alma:", a % b)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Karşılaştırma Operatörleri',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Karşılaştırma operatörleri, değerleri karşılaştırmak için kullanılır ve genellikle koşullu ifadelerde kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'x = 10\n'
+                    'y = 5\n'
+                    'print("Eşit mi?", x == y)\n'
+                    'print("Eşit değil mi?", x != y)\n'
+                    'print("Büyük mü?", x > y)\n'
+                    'print("Küçük mü?", x < y)\n'
+                    'print("Büyük veya eşit mi?", x >= y)\n'
+                    'print("Küçük veya eşit mi?", x <= y)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Mantıksal Operatörler',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Mantıksal operatörler, mantıksal işlemler yapmak için kullanılır ve genellikle koşullu ifadelerde kullanılır.',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.black,
+                  padding: const EdgeInsets.all(10),
+                  child: const Text(
+                    'p = True\n'
+                    'q = False\n'
+                    'print("AND:", p and q)\n'
+                    'print("OR:", p or q)\n'
+                    'print("NOT:", not p)',
+                    style:
+                        TextStyle(color: Colors.white, fontFamily: 'monospace'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

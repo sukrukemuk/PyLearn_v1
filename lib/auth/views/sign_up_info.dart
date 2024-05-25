@@ -38,7 +38,6 @@ class _SignUpInfoState extends State<SignUpInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SingleChildScrollView(
         child: Stack(
           alignment: Alignment.bottomCenter,
@@ -61,8 +60,7 @@ class _SignUpInfoState extends State<SignUpInfo> {
                 child: Column(
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(),
@@ -108,11 +106,9 @@ class _SignUpInfoState extends State<SignUpInfo> {
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                         controller: _nameController,
-                        textInputAction: TextInputAction
-                            .next,
+                        textInputAction: TextInputAction.next,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(
-                              _surnameFocus);
+                          FocusScope.of(context).requestFocus(_surnameFocus);
                         },
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -122,10 +118,7 @@ class _SignUpInfoState extends State<SignUpInfo> {
                         },
                         decoration: InputDecoration(
                           labelText: "İsim",
-                          labelStyle: const TextStyle(
-                              color: Colors
-                                  .white),
-
+                          labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide:
@@ -133,17 +126,13 @@ class _SignUpInfoState extends State<SignUpInfo> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           filled: true,
                           fillColor: Colors.black,
@@ -159,12 +148,10 @@ class _SignUpInfoState extends State<SignUpInfo> {
                             fontSize: 18,
                             fontWeight: FontWeight.w500),
                         controller: _surnameController,
-                        focusNode:
-                            _surnameFocus,
+                        focusNode: _surnameFocus,
                         textInputAction: TextInputAction.next,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(
-                              _usernameFocus);
+                          FocusScope.of(context).requestFocus(_usernameFocus);
                         },
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -174,10 +161,7 @@ class _SignUpInfoState extends State<SignUpInfo> {
                         },
                         decoration: InputDecoration(
                           labelText: "Soyisim",
-                          labelStyle: const TextStyle(
-                              color: Colors
-                                  .white),
-
+                          labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide:
@@ -185,17 +169,13 @@ class _SignUpInfoState extends State<SignUpInfo> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
                           filled: true,
                           fillColor: Colors.black,
@@ -220,10 +200,7 @@ class _SignUpInfoState extends State<SignUpInfo> {
                         },
                         decoration: InputDecoration(
                           labelText: "Kullanıcı Adı",
-                          labelStyle: const TextStyle(
-                              color: Colors
-                                  .white),
-
+                          labelStyle: const TextStyle(color: Colors.white),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
                             borderSide:
@@ -231,20 +208,15 @@ class _SignUpInfoState extends State<SignUpInfo> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
-
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5),
-                            borderSide: const BorderSide(
-                                color: Colors.blue,
-                                width:
-                                    2),
+                            borderSide:
+                                const BorderSide(color: Colors.blue, width: 2),
                           ),
-                          filled: true, 
+                          filled: true,
                           fillColor: Colors.black,
                         ),
                       ),
@@ -274,7 +246,7 @@ class _SignUpInfoState extends State<SignUpInfo> {
                                 ref
                                     .read(AuthControllerProvider)
                                     .storeUserInfoRoFirebase(userModel)
-                                    .whenComplete(() { 
+                                    .whenComplete(() {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content: Text(
@@ -287,7 +259,8 @@ class _SignUpInfoState extends State<SignUpInfo> {
                                   );
                                   Navigator.pushAndRemoveUntil(
                                     context,
-                                    MaterialPageRoute(builder: (_) => const SignIn()),
+                                    MaterialPageRoute(
+                                        builder: (_) => const SignIn()),
                                     (route) => false,
                                   );
                                 });
@@ -295,7 +268,8 @@ class _SignUpInfoState extends State<SignUpInfo> {
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
-                              side: const BorderSide(color: Colors.black, width: 3),
+                              side: const BorderSide(
+                                  color: Colors.black, width: 3),
                             ),
                             color: Colors.white,
                             minWidth: 400,

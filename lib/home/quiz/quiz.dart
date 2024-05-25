@@ -66,16 +66,7 @@ class _QuizzesState extends State<Quizzes> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 27, 27),
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                Colors.black
-              ],
-            ),
-          ),
-        ),
+        backgroundColor: Colors.white,
         title: const Text(
           'Quizz',
           style: TextStyle(
@@ -108,8 +99,7 @@ class _QuizzesState extends State<Quizzes> {
               padding: const EdgeInsets.all(10),
               children: [
                 // ignore: unnecessary_null_comparison
-                if (userData != null)
-                  ..._buildQuizCards(),
+                if (userData != null) ..._buildQuizCards(),
               ],
             ),
     );
@@ -120,52 +110,52 @@ class _QuizzesState extends State<Quizzes> {
       buildQuizCard(
         context,
         "temelseviye1",
-        "assets/images/1.png",
+        "assets/images/quizz1.png",
       ),
       buildQuizCard(
         context,
         "temelseviye2",
-        "assets/images/2.png",
+        "assets/images/quizz2.png",
       ),
       buildQuizCard(
         context,
         "kolayseviye1",
-        "assets/images/3.png",
+        "assets/images/quizz3.png",
       ),
       buildQuizCard(
         context,
         "kolayseviye2",
-        "assets/images/1.png",
+        "assets/images/quizz4.png",
       ),
       buildQuizCard(
         context,
         "ortaseviye1",
-        "assets/images/2.png",
+        "assets/images/quizz5.png",
       ),
       buildQuizCard(
         context,
         "ortaseviye2",
-        "assets/images/3.png",
+        "assets/images/quizz6.png",
       ),
       buildQuizCard(
         context,
         "zorseviye1",
-        "assets/images/2.png",
+        "assets/images/quizz7.png",
       ),
       buildQuizCard(
         context,
         "zorseviye2",
-        "assets/images/3.png",
+        "assets/images/quizz8.png",
       ),
       buildQuizCard(
         context,
         "genel1",
-        "assets/images/1.png",
+        "assets/images/quizz9.png",
       ),
       buildQuizCard(
         context,
         "genel2",
-        "assets/images/2.png",
+        "assets/images/quizz10.png",
       ),
     ];
   }
@@ -187,8 +177,7 @@ class _QuizzesState extends State<Quizzes> {
     } else if (category == 'temelseviye2') {
       isQuizEnabled = isQuizCompleted ||
           (userData.containsKey('completed_quizzes') &&
-              userData['completed_quizzes']!.containsKey(
-                  'temelseviye1'));
+              userData['completed_quizzes']!.containsKey('temelseviye1'));
     } else if (category == 'kolayseviye1' ||
         category == 'kolayseviye2' ||
         category == 'ortaseviye1' ||
@@ -202,8 +191,7 @@ class _QuizzesState extends State<Quizzes> {
         isQuizEnabled = userData.containsKey('completed_quizzes') &&
             userData['completed_quizzes']!.containsKey(previousCategory);
       } else {
-        isQuizEnabled =
-            false;
+        isQuizEnabled = false;
       }
     } else {
       isQuizEnabled = false;
@@ -262,6 +250,7 @@ class _QuizzesState extends State<Quizzes> {
       ),
     );
   }
+
   String _getPreviousCategory(String category) {
     switch (category) {
       case 'temelseviye2':

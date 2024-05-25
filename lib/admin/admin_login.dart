@@ -104,11 +104,10 @@ class _AdminLoginState extends State<AdminLogin> {
                                   style: const TextStyle(color: Colors.white),
                                   cursorColor: Colors.white,
                                   controller: adminnamecontroller,
-                                  textInputAction: TextInputAction
-                                      .next, 
+                                  textInputAction: TextInputAction.next,
                                   onFieldSubmitted: (_) {
-                                    FocusScope.of(context).requestFocus(
-                                        _passwordFocus);
+                                    FocusScope.of(context)
+                                        .requestFocus(_passwordFocus);
                                   },
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -148,9 +147,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                   style: const TextStyle(color: Colors.white),
                                   cursorColor: Colors.white,
                                   controller: adminpasswordcontroller,
-                                  focusNode:
-                                      _passwordFocus,
-
+                                  focusNode: _passwordFocus,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return "Lütfen parola giriniz.";
@@ -175,8 +172,10 @@ class _AdminLoginState extends State<AdminLogin> {
                                 LoginAdmin();
                               },
                               child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 12),
-                                margin: const EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                     color: Colors.black,
@@ -207,7 +206,6 @@ class _AdminLoginState extends State<AdminLogin> {
     );
   }
 
-
   // ignore: non_constant_identifier_names
   LoginAdmin() {
     FirebaseFirestore.instance.collection("admin").get().then((snapshot) {
@@ -219,7 +217,8 @@ class _AdminLoginState extends State<AdminLogin> {
         }
       }
       if (found) {
-        Route route = MaterialPageRoute(builder: (context) => const AdminPage());
+        Route route =
+            MaterialPageRoute(builder: (context) => const AdminPage());
         Navigator.pushReplacement(context, route);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

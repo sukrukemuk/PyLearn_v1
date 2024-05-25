@@ -6,7 +6,7 @@ class Lesson10 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+     appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -17,9 +17,9 @@ class Lesson10 extends StatelessWidget {
           ),
         ),
         title: const Text(
-          'Veriler ve Sözdizimleri',
+          'Değer ve Referans Türleri',
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -31,53 +31,72 @@ class Lesson10 extends StatelessWidget {
           },
         ),
       ),
-      body: const SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Python Veri Türleri ve Sözdizimi',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Python\'da Değer ve Referans Türleri',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Python\'da, değişkenlerin değer veya referans türlerine sahip olduğu önemlidir. Değer türleri doğrudan değerlerini tutarlar, ancak referans türleri bellekte adreslerini gösterirler.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Değer Türleri (Value Types)',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Değer türlerinde, değişkenin kendisi, değeri içerir. Bu nedenle, bir değişkenin değeri kopyalandığında, orijinal değişken etkilenmez.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Örnek (Value Type):',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.black,
+              child: const Text(
+                'x = 10\ny = x\nx = 20\nprint(y)  # Çıktı: 10',
+                style: TextStyle(fontSize: 14, color: Colors.white),
               ),
-              SizedBox(height: 10),
-              Text(
-                'Python, kullanımı kolay ve anlaşılır bir sözdizimine sahip bir programlama dilidir. Python\'da kullanılan temel veri tipleri şunlardır:\n\n'
-                '- Sayılar: Tam sayılar (int), ondalık sayılar (float), karmaşık sayılar\n'
-                '- Metin: String\n'
-                '- Boole: True veya False\n'
-                '- Listeler\n'
-                '- Demetler (Tuples)\n'
-                '- Sözlükler (Dictionaries)\n\n'
-                'Python\'da, kod blokları girintilendirme ile ayrılır. Ayrıca, birçok dilde olduğu gibi koşullu ifadeler (if-else), döngüler (for, while) ve fonksiyonlar gibi yapılar da bulunur.\n\n'
-                'Örneklerle:',
-                style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Referans Türleri (Reference Types)',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Referans türlerinde, değişken, bellekteki bir nesnenin adresini içerir. Dolayısıyla, bir değişkenin referansı kopyalandığında, aynı nesneye işaret edilir ve değişiklikler her iki değişkende de etkilenir.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Örnek (Reference Type):',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.black,
+              child: const Text(
+                'list1 = [1, 2, 3]\nlist2 = list1\nlist1.append(4)\nprint(list2)  # Çıktı: [1, 2, 3, 4]',
+                style: TextStyle(fontSize: 14, color: Colors.white),
               ),
-              SizedBox(height: 10),
-              Text(
-                '// Koşullu İfadeler\n'
-                'if condition:\n'
-                '    # Kod bloğu\n'
-                'elif another_condition:\n'
-                '    # Başka bir kod bloğu\n'
-                'else:\n'
-                '    # Diğer durum için kod bloğu\n\n'
-                '// Döngüler\n'
-                'for item in iterable:\n'
-                '    # Kod bloğu\n\n'
-                'while condition:\n'
-                '    # Kod bloğu\n\n'
-                '// Fonksiyonlar\n'
-                'def function_name(parameters):\n'
-                '    # Fonksiyonun yapacağı işlemler\n'
-                '    return result',
-                style: TextStyle(fontSize: 16, fontFamily: 'Courier'),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
