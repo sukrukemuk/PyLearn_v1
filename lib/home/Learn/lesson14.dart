@@ -141,7 +141,7 @@ class Lesson14 extends StatelessWidget {
                 const SizedBox(height: 20),
                 const Text(
                   'Örnek Çağrılar:',
-                  style:                  TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -165,4 +165,3 @@ class Lesson14 extends StatelessWidget {
     );
   }
 }
-

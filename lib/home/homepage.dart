@@ -222,7 +222,6 @@ class DrawerWidget extends StatelessWidget {
                       String userName = snapshot.data?['name'] ?? 'Misafir';
                       String surName = snapshot.data?['surname'] ?? '';
 
-
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Column(
@@ -242,9 +241,8 @@ class DrawerWidget extends StatelessWidget {
                                 Text(
                                   '$userName $surName ',
                                   style: GoogleFonts.josefinSans(
-                                    textStyle: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall,
+                                    textStyle:
+                                        Theme.of(context).textTheme.titleSmall,
                                     fontSize: 25,
                                     fontWeight: FontWeight.w700,
                                     color: Colors.black,

@@ -6,7 +6,7 @@ class Lesson10 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(
+      appBar: AppBar(
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -99,4 +99,3 @@ class Lesson10 extends StatelessWidget {
     );
   }
 }
-

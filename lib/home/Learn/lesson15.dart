@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class Lesson15 extends StatelessWidget {
   const Lesson15({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,4 +168,3 @@ class Lesson15 extends StatelessWidget {
     );
   }
 }
-
