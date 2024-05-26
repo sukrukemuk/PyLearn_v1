@@ -31,15 +31,22 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text("Şifre Sıfırlama"),
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              title: const Text("Şifre Sıfırlama",
+                  style: TextStyle(color: Colors.blue)),
               content: const Text(
-                  "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi."),
+                  "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.",
+                  style: TextStyle(color: Colors.white)),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text("Tamam"),
+                  child: const Text("Tamam",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ],
             );
@@ -51,15 +58,22 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text("Hata"),
-              content:
-                  const Text("Bu e-posta adresiyle bir kullanıcı bulunamadı."),
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              title: const Text("Hata!", style: TextStyle(color: Colors.white)),
+              content: const Text(
+                "Bu e-posta adresiyle kayıtlı bir kullanıcı bulunamadı.",
+                style: TextStyle(color: Colors.red),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text("Tamam"),
+                  child: const Text("Tamam",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ],
             );
@@ -130,89 +144,93 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           ),
         ),
         child: Center(
-          child: Container(
-            margin: const EdgeInsets.only(
-                right: 20.0, left: 20.0, top: 170, bottom: 170),
-            padding: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 30),
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              height: 350,
+              margin: const EdgeInsets.only(
+                  right: 20.0, left: 20.0, top: 170, bottom: 170),
+              padding: const EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: Text(
+                        "Şifreni Sıfırla",
+                        style: GoogleFonts.josefinSans(
+                          textStyle: Theme.of(context).textTheme.titleSmall,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: "E-posta",
+                      labelStyle: const TextStyle(color: Colors.black),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 2),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 2),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
                     child: Text(
-                      "Şifreni Sıfırla",
+                      "Bağlantı bu e-posta adresine gönderilecek.",
                       style: GoogleFonts.josefinSans(
                         textStyle: Theme.of(context).textTheme.titleSmall,
-                        fontSize: 40,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                ),
-                TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    labelText: "E-posta",
-                    labelStyle: const TextStyle(color: Colors.black),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2),
+                  const SizedBox(height: 30),
+                  MaterialButton(
+                    onPressed: () {
+                      String email = _emailController.text.trim();
+                      _resetPassword(email);
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: const BorderSide(color: Colors.white, width: 2),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide:
-                          const BorderSide(color: Colors.black, width: 2),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: Text(
-                    "Bağlantı bu e-posta adresine gönderilecek.",
-                    style: GoogleFonts.josefinSans(
-                      textStyle: Theme.of(context).textTheme.titleSmall,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                    color: Colors.black,
+                    height: 50,
+                    child: const Text(
+                      "Gönder",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                MaterialButton(
-                  onPressed: () {
-                    String email = _emailController.text.trim();
-                    _resetPassword(email);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    side: const BorderSide(color: Colors.white, width: 2),
-                  ),
-                  color: Colors.black,
-                  height: 50,
-                  child: const Text(
-                    "Gönder",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

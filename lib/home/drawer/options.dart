@@ -20,12 +20,42 @@ class MyLogoWidget extends StatelessWidget {
   }
 }
 
-class AccountDeletionScreen extends StatelessWidget {
+class OptionsScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  AccountDeletionScreen({super.key});
+  OptionsScreen({super.key});
 
-  Future<void> _deleteAccount(BuildContext context) async {}
+  Future<void> _deleteAccount(BuildContext context) async {
+     try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        await user.delete();
+        await _auth.signOut();
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.clear();
+
+        Navigator.pushAndRemoveUntil(
+          // ignore: use_build_context_synchronously
+          context,
+          MaterialPageRoute(builder: (context) => const SignIn()),
+          (Route<dynamic> route) => false,
+        );
+      } else {
+        throw Exception('Kullanıcı bulunamadı.');
+      }
+    } catch (e) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Hesap silme işlemi başarısız: $e',
+            style: const TextStyle(fontSize: 13, color: Colors.red),
+          ),
+          backgroundColor: Colors.black,
+        ),
+      );
+    }
+  }
 
   Future<void> _changePassword(BuildContext context) async {
     try {

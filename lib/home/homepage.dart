@@ -270,7 +270,7 @@ class DrawerWidget extends StatelessWidget {
               ListTileWidget(
                 icon: Icons.settings,
                 title: 'Ayarlar',
-                page: AccountDeletionScreen(),
+                page: OptionsScreen(),
               ),
               ListTile(
                 leading: const Icon(Icons.exit_to_app),
