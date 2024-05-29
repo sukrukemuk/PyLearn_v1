@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pylearn_v1/home/quiz/quiz.dart';
 import 'package:pylearn_v1/service/database.dart';
 import 'package:share_plus/share_plus.dart';
+import 'dart:async';
 
 class Questions extends StatefulWidget {
   final String category;
@@ -25,11 +26,21 @@ class _QuestionsState extends State<Questions> {
   int _correctAnswerCount = 0;
   final Map<int, List<String>> _shuffledOptions = {};
 
+  Timer? _timer;
+  int _remainingSeconds = 20;
+  double _progressValue = 1.0;
+
   @override
   void initState() {
     super.initState();
     _initializeData = _initializeStream();
     _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   Future<void> _initializeStream() async {
@@ -39,6 +50,102 @@ class _QuestionsState extends State<Questions> {
     for (var i = 0; i < _quizList.length; i++) {
       _shuffledOptions[i] = _getShuffledOptions(_quizList[i]);
     }
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    setState(() {
+      _remainingSeconds = 20;
+      _progressValue = 1.0;
+    });
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_remainingSeconds > 0) {
+        setState(() {
+          _remainingSeconds--;
+          _progressValue = _remainingSeconds / 20;
+        });
+      } else {
+        _timer?.cancel();
+        _pageController.nextPage(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeIn,
+        );
+      }
+    });
+  }
+
+  Color _getColorFromProgress(double progress) {
+    if (progress >= 0.75) {
+      return Colors.green;
+    } else if (progress >= 0.5) {
+      return Colors.yellow;
+    } else if (progress >= 0.25) {
+      return Colors.orange;
+    } else {
+      return Colors.red;
+    }
+  }
+
+  Animation<Color?> _getColorAnimation() {
+    return AlwaysStoppedAnimation<Color?>(
+        _getColorFromProgress(_progressValue));
+  }
+
+  bool _showAppBar = true;
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.black],
+          ),
+        ),
+      ),
+      title: const Text(
+        'Quizz',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        color: Colors.black,
+        iconSize: 30,
+      ),
+      actions: [
+        SizedBox(
+          width: 20,
+          height: 20,
+          child: CircularProgressIndicator(
+            value: _progressValue,
+            strokeWidth: 5,
+            backgroundColor: Colors.grey[300],
+            valueColor: _getColorAnimation(),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(
+            child: Text(
+              'SKOR: $_correctAnswerCount',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   List<String> _getShuffledOptions(DocumentSnapshot ds) {
@@ -56,46 +163,7 @@ class _QuestionsState extends State<Questions> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.white, Colors.black],
-            ),
-          ),
-        ),
-        title: const Text(
-          'Quizz',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          color: Colors.black,
-          iconSize: 30,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(
-              child: Text(
-                'SKOR: $_correctAnswerCount',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: _showAppBar ? _buildAppBar() : null,
       body: FutureBuilder<void>(
         future: _initializeData,
         builder: (context, snapshot) {
@@ -122,6 +190,9 @@ class _QuestionsState extends State<Questions> {
                   if (index < _quizList.length) {
                     _showAnswer = false;
                     _selectedOptionIndex = -1;
+                    _startTimer();
+                  } else {
+                    _showAppBar = false;
                   }
                 });
               },
@@ -159,9 +230,6 @@ class _QuestionsState extends State<Questions> {
               padding: const EdgeInsets.only(right: 7),
               child: IconButton(
                 onPressed: () {
-                  setState(() {
-                    _showAnswer = true;
-                  });
                   _pageController.nextPage(
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.easeIn,
@@ -182,12 +250,36 @@ class _QuestionsState extends State<Questions> {
       String option, bool isCorrect, int index, String correctOption) {
     bool isSelected = _selectedOptionIndex == index;
 
-    if (_showAnswer) {
+    if (!_showAnswer) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            _showAnswer = true;
+            _selectedOptionIndex = index;
+          });
+          if (isCorrect) {
+            _correctAnswerCount += 10;
+          }
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 2),
+            borderRadius: BorderRadius.circular(7),
+          ),
+          child: Text(
+            option,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      );
+    } else {
       if (isSelected && isCorrect) {
-        if (_selectedOptionIndex == index) {
-          _correctAnswerCount += 10;
-          _selectedOptionIndex = -1;
-        }
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
           padding: const EdgeInsets.all(18),
@@ -205,9 +297,6 @@ class _QuestionsState extends State<Questions> {
           ),
         );
       } else if (isSelected && !isCorrect) {
-        if (_selectedOptionIndex == index) {
-          _selectedOptionIndex = -1;
-        }
         return Column(
           children: [
             Container(
@@ -248,31 +337,6 @@ class _QuestionsState extends State<Questions> {
       } else {
         return const SizedBox();
       }
-    } else {
-      return GestureDetector(
-        onTap: () {
-          setState(() {
-            _showAnswer = true;
-            _selectedOptionIndex = index;
-          });
-        },
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
-          padding: const EdgeInsets.all(18),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 2),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          child: Text(
-            option,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      );
     }
   }
 }
@@ -305,6 +369,7 @@ class QuizResultPage extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

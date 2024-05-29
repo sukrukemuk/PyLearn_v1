@@ -29,22 +29,58 @@ class OptionsScreen extends StatelessWidget {
     try {
       final user = _auth.currentUser;
       if (user != null) {
-        await user.delete();
-        await _auth.signOut();
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.clear();
-
-        Navigator.pushAndRemoveUntil(
-          // ignore: use_build_context_synchronously
-          context,
-          MaterialPageRoute(builder: (context) => const SignIn()),
-          (Route<dynamic> route) => false,
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              title: const Text(
+                "Hesabı Sil",
+                style: TextStyle(color: Colors.blue),
+              ),
+              content: const Text(
+                "Hesabınızı silmek istediğinize emin misiniz?",
+                style: TextStyle(color: Colors.white),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    "Hayır",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    await user.delete();
+                    await _auth.signOut();
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.clear();
+                    Navigator.pushAndRemoveUntil(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignIn()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  child: const Text(
+                    "Evet",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
+            );
+          },
         );
       } else {
         throw Exception('Kullanıcı bulunamadı.');
       }
     } catch (e) {
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -148,31 +184,6 @@ class OptionsScreen extends StatelessWidget {
               ),
               child: const Text(
                 'Şifreni Değiştir',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                await _auth.signOut();
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.clear();
-                Navigator.pushAndRemoveUntil(
-                  // ignore: use_build_context_synchronously
-                  context,
-                  MaterialPageRoute(builder: (context) => const SignIn()),
-                  (Route<dynamic> route) => false,
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                minimumSize: const Size(150, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-              ),
-              child: const Text(
-                'Çıkış Yap',
                 style: TextStyle(color: Colors.white),
               ),
             ),

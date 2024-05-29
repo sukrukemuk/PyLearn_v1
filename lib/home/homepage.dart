@@ -1,14 +1,15 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pylearn_v1/auth/views/sign_in.dart';
 import 'package:pylearn_v1/home/course/course.dart';
 import 'package:pylearn_v1/home/drawer/help.dart';
 import 'package:pylearn_v1/home/drawer/options.dart';
 import 'package:pylearn_v1/home/drawer/profile.dart';
 import 'package:pylearn_v1/home/Learn/learn.dart';
 import 'package:pylearn_v1/home/quiz/quiz.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,6 +21,48 @@ void _openWhatsAppGroup() async {
   var url = Uri.parse("https://chat.whatsapp.com/F0he0oXa8pyGYcsNfLeDyb");
   await launchUrl(url);
 }
+class ListTileWidget extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final Widget page;
+
+  const ListTileWidget({
+    required this.icon,
+    required this.title,
+    required this.page,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+    );
+  }
+}
+
+Future<Map<String, dynamic>> getUserData() async {
+  Map<String, dynamic> userData = {};
+  try {
+    String uid = FirebaseAuth.instance.currentUser!.uid;
+    var snapshot =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    userData = snapshot.data() ?? {};
+  } catch (e) {
+    // ignore: avoid_print
+    print("Kullanıcı verisi alınamadı: $e");
+  }
+  return userData;
+}
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -219,9 +262,7 @@ class DrawerWidget extends StatelessWidget {
                       );
                     } else {
                       String photoUrl = snapshot.data?['profilePhoto'] ?? '';
-                      String userName = snapshot.data?['name'] ?? 'Misafir';
-                      String surName = snapshot.data?['surname'] ?? '';
-
+                      String userName = snapshot.data?['username'] ?? 'Misafir';
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Column(
@@ -239,7 +280,7 @@ class DrawerWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  '$userName $surName ',
+                                  userName,
                                   style: GoogleFonts.josefinSans(
                                     textStyle:
                                         Theme.of(context).textTheme.titleSmall,
@@ -275,8 +316,16 @@ class DrawerWidget extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.exit_to_app),
                 title: const Text('Çıkış Yap'),
-                onTap: () {
-                  exit(0);
+                onTap: () async {
+                  await _auth.signOut();
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.clear();
+                  Navigator.pushAndRemoveUntil(
+                    // ignore: use_build_context_synchronously
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignIn()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
               ),
             ],
@@ -295,43 +344,3 @@ class DrawerWidget extends StatelessWidget {
   }
 }
 
-class ListTileWidget extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final Widget page;
-
-  const ListTileWidget({
-    required this.icon,
-    required this.title,
-    required this.page,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
-      },
-    );
-  }
-}
-
-Future<Map<String, dynamic>> getUserData() async {
-  Map<String, dynamic> userData = {};
-  try {
-    String uid = FirebaseAuth.instance.currentUser!.uid;
-    var snapshot =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    userData = snapshot.data() ?? {};
-  } catch (e) {
-    // ignore: avoid_print
-    print("Kullanıcı verisi alınamadı: $e");
-  }
-  return userData;
-}
