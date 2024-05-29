@@ -26,7 +26,7 @@ class OptionsScreen extends StatelessWidget {
   OptionsScreen({super.key});
 
   Future<void> _deleteAccount(BuildContext context) async {
-     try {
+    try {
       final user = _auth.currentUser;
       if (user != null) {
         await user.delete();

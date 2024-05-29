@@ -18,11 +18,12 @@ class Questions extends StatefulWidget {
 
 class _QuestionsState extends State<Questions> {
   late Future<void> _initializeData;
-  late Stream<QuerySnapshot> _quizStream;
+  late List<DocumentSnapshot> _quizList;
   bool _showAnswer = false;
   late PageController _pageController;
   int _selectedOptionIndex = -1;
   int _correctAnswerCount = 0;
+  final Map<int, List<String>> _shuffledOptions = {};
 
   @override
   void initState() {
@@ -32,7 +33,23 @@ class _QuestionsState extends State<Questions> {
   }
 
   Future<void> _initializeStream() async {
-    _quizStream = await DatabaseMethods().getCategoryQuiz(widget.category);
+    var quizStream = await DatabaseMethods().getCategoryQuiz(widget.category);
+    _quizList = (await quizStream.first).docs;
+    _quizList.shuffle();
+    for (var i = 0; i < _quizList.length; i++) {
+      _shuffledOptions[i] = _getShuffledOptions(_quizList[i]);
+    }
+  }
+
+  List<String> _getShuffledOptions(DocumentSnapshot ds) {
+    List<String> options = [
+      ds["Option1"],
+      ds["Option2"],
+      ds["Option3"],
+      ds["Option4"],
+    ];
+    options.shuffle();
+    return options;
   }
 
   @override
@@ -87,37 +104,26 @@ class _QuestionsState extends State<Questions> {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            return StreamBuilder<QuerySnapshot>(
-              stream: _quizStream,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+            return PageView.builder(
+              controller: _pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: _quizList.length + 1,
+              itemBuilder: (context, index) {
+                if (index == _quizList.length) {
+                  return QuizResultPage(
+                      correctAnswerCount: _correctAnswerCount,
+                      category: widget.category);
                 }
-                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text('No data available'));
-                }
-                return PageView.builder(
-                  controller: _pageController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: snapshot.data!.docs.length + 1,
-                  itemBuilder: (context, index) {
-                    if (index == snapshot.data!.docs.length) {
-                      return QuizResultPage(
-                          correctAnswerCount: _correctAnswerCount,
-                          category: widget.category);
-                    }
-                    final DocumentSnapshot ds = snapshot.data!.docs[index];
-                    return _buildQuizCard(context, ds, index);
-                  },
-                  onPageChanged: (index) {
-                    setState(() {
-                      if (index < snapshot.data!.docs.length) {
-                        _showAnswer = false;
-                        _selectedOptionIndex = -1;
-                      }
-                    });
-                  },
-                );
+                final DocumentSnapshot ds = _quizList[index];
+                return _buildQuizCard(context, ds, index);
+              },
+              onPageChanged: (index) {
+                setState(() {
+                  if (index < _quizList.length) {
+                    _showAnswer = false;
+                    _selectedOptionIndex = -1;
+                  }
+                });
               },
             );
           }
@@ -127,7 +133,7 @@ class _QuestionsState extends State<Questions> {
   }
 
   Widget _buildQuizCard(BuildContext context, DocumentSnapshot ds, int index) {
-    String correctOption = ds["Correct"];
+    List<String> options = _shuffledOptions[index]!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -141,14 +147,10 @@ class _QuestionsState extends State<Questions> {
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
-        _buildOption(
-            ds["Option1"], ds["Correct"] == ds["Option1"], 0, correctOption),
-        _buildOption(
-            ds["Option2"], ds["Correct"] == ds["Option2"], 1, correctOption),
-        _buildOption(
-            ds["Option3"], ds["Correct"] == ds["Option3"], 2, correctOption),
-        _buildOption(
-            ds["Option4"], ds["Correct"] == ds["Option4"], 3, correctOption),
+        _buildOption(options[0], ds["Correct"] == options[0], 0, ds["Correct"]),
+        _buildOption(options[1], ds["Correct"] == options[1], 1, ds["Correct"]),
+        _buildOption(options[2], ds["Correct"] == options[2], 2, ds["Correct"]),
+        _buildOption(options[3], ds["Correct"] == options[3], 3, ds["Correct"]),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -203,6 +205,9 @@ class _QuestionsState extends State<Questions> {
           ),
         );
       } else if (isSelected && !isCorrect) {
+        if (_selectedOptionIndex == index) {
+          _selectedOptionIndex = -1;
+        }
         return Column(
           children: [
             Container(
@@ -240,8 +245,6 @@ class _QuestionsState extends State<Questions> {
             ),
           ],
         );
-      } else if (!isSelected && isCorrect) {
-        return const SizedBox();
       } else {
         return const SizedBox();
       }
