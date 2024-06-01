@@ -13,10 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void main() {
-  runApp(const HomePage());
-}
-
 void _openWhatsAppGroup() async {
   var url = Uri.parse("https://chat.whatsapp.com/F0he0oXa8pyGYcsNfLeDyb");
   await launchUrl(url);
