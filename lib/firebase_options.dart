@@ -25,9 +25,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,9 +46,18 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDVA2Aio3zDdG8Mg6ueyJc9u74-FwO_D8E',
+    appId: '1:544911819938:web:54c1bc458e5d44aad103fb',
+    messagingSenderId: '544911819938',
+    projectId: 'pylearn-v1',
+    authDomain: 'pylearn-v1.firebaseapp.com',
+    storageBucket: 'pylearn-v1.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDSQ91kjEdn0yYDY_a_vcQJsl2K1NfagtU',
-    appId: '1:544911819938:android:2b7860519b21dd27d103fb',
+    appId: '1:544911819938:android:fef46e33f3f9daaad103fb',
     messagingSenderId: '544911819938',
     projectId: 'pylearn-v1',
     storageBucket: 'pylearn-v1.appspot.com',
@@ -50,38 +65,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBD5fTf1MAOkaVDcJyZCIfdU3O649PBDh0',
-    appId: '1:544911819938:ios:039659a1b8d068b0d103fb',
+    appId: '1:544911819938:ios:77daf3a5d05d0498d103fb',
     messagingSenderId: '544911819938',
     projectId: 'pylearn-v1',
     storageBucket: 'pylearn-v1.appspot.com',
     iosBundleId: 'com.example.pylearnV1',
   );
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDVA2Aio3zDdG8Mg6ueyJc9u74-FwO_D8E',
-    appId: '1:544911819938:web:672af69e8a45dd94d103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    authDomain: 'pylearn-v1.firebaseapp.com',
-    storageBucket: 'pylearn-v1.appspot.com',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBD5fTf1MAOkaVDcJyZCIfdU3O649PBDh0',
-    appId: '1:544911819938:ios:039659a1b8d068b0d103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    storageBucket: 'pylearn-v1.appspot.com',
-    iosBundleId: 'com.example.pylearnV1',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDVA2Aio3zDdG8Mg6ueyJc9u74-FwO_D8E',
-    appId: '1:544911819938:web:c1c090451b5ac177d103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    authDomain: 'pylearn-v1.firebaseapp.com',
-    storageBucket: 'pylearn-v1.appspot.com',
-  );
-
 }

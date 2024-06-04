@@ -7,26 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:544911819938:android:47a5bd081975ac4fd103fb",
-        "android_client_info": {
-          "package_name": "com.example.pylearn"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDSQ91kjEdn0yYDY_a_vcQJsl2K1NfagtU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:544911819938:android:2b7860519b21dd27d103fb",
+        "mobilesdk_app_id": "1:544911819938:android:fef46e33f3f9daaad103fb",
         "android_client_info": {
           "package_name": "com.example.pylearn_v1"
         }
