@@ -17,6 +17,7 @@ void _openWhatsAppGroup() async {
   var url = Uri.parse("https://chat.whatsapp.com/F0he0oXa8pyGYcsNfLeDyb");
   await launchUrl(url);
 }
+
 class ListTileWidget extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -339,4 +340,3 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 }
-

@@ -9,10 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^4.16.0
-  firebase_auth: ^4.19.0
-  firebase_core: ^2.28.0
-  firebase_storage: ^11.7.4
+  cloud_firestore: ^5.1.0
+  firebase_auth: ^5.1.2
+  firebase_core: ^3.2.0
+  firebase_storage: ^12.1.1
   flutter_riverpod: ^2.5.1
   image_picker: ^1.1.1
   provider: ^6.1.2
@@ -20,7 +20,7 @@ dependencies:
   youtube_player_flutter: ^9.0.0
   cached_network_image: ^3.3.1
   share_plus: ^9.0.0
-  firebase_database: ^10.5.5
+  firebase_database: ^11.0.3
   url_launcher: ^6.2.6
   flutter_launcher_icons: ^0.13.1  
   flutter_svg: ^2.0.10+1
