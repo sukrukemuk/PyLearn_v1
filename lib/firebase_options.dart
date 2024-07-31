@@ -46,29 +46,4 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDVA2Aio3zDdG8Mg6ueyJc9u74-FwO_D8E',
-    appId: '1:544911819938:web:54c1bc458e5d44aad103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    authDomain: 'pylearn-v1.firebaseapp.com',
-    storageBucket: 'pylearn-v1.appspot.com',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDSQ91kjEdn0yYDY_a_vcQJsl2K1NfagtU',
-    appId: '1:544911819938:android:fef46e33f3f9daaad103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    storageBucket: 'pylearn-v1.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBD5fTf1MAOkaVDcJyZCIfdU3O649PBDh0',
-    appId: '1:544911819938:ios:77daf3a5d05d0498d103fb',
-    messagingSenderId: '544911819938',
-    projectId: 'pylearn-v1',
-    storageBucket: 'pylearn-v1.appspot.com',
-    iosBundleId: 'com.example.pylearnV1',
-  );
 }
