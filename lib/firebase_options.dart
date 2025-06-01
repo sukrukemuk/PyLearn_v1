@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,4 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDSQ91kjEdn0yYDY_a_vcQJsl2K1NfagtU',
+    appId: '1:544911819938:android:fef46e33f3f9daaad103fb',
+    messagingSenderId: '544911819938',
+    projectId: 'pylearn-v1',
+    storageBucket: 'pylearn-v1.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBD5fTf1MAOkaVDcJyZCIfdU3O649PBDh0',
+    appId: '1:544911819938:ios:77daf3a5d05d0498d103fb',
+    messagingSenderId: '544911819938',
+    projectId: 'pylearn-v1',
+    storageBucket: 'pylearn-v1.appspot.com',
+    iosBundleId: 'com.example.pylearnV1',
+  );
 }

@@ -1,7 +1,5 @@
 plugins {
     id "com.android.application"
-    // START: FlutterFire Configuration
-    // END: FlutterFire Configuration
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
